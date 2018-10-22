@@ -1,0 +1,1 @@
+Two co-expression networks were constructed on a subset of drough-responsive sRNA. One used sRNA expression data under the dought condition (DS) and the other used data under the well-watered condition (WW). The network analysis was performed by Dr. Erliang Zeng who is an assistant professor at the University of South Dakota.

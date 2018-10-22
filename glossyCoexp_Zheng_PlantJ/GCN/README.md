@@ -1,0 +1,2 @@
+### Construction of the gene coexpression network (GCN)
+B73 RNA-Seq data was downloaded from the NCBI sequence read archive (SRA). Raw reads were trimmed to remove adaptors and low-quality base pairs via Trimmomatic (v3.3). Clean reads were aligned to the B73Ref3 with STAR. The normalized count data per gene (FPKM) were used to construct the gene co-expression network (GCN) with the WGCNA R package. Here, an example input dataset containing expression data of 2,000 genes was provided.

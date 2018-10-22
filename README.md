@@ -1,2 +1,3 @@
 # manuscripts
-collection of scripts used in published manuscripts
+collection of scripts used in manuscripts from Liu lab.
+
