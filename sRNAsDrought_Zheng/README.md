@@ -1,7 +1,7 @@
 ## sRNAs_drought
-keys scripts used in the manuscript of maize small RNA transcriptomic profiles under drought
+keys scripts used in the manuscript of maize small RNA transcriptomic profiles under drought.
 
-This repository includes key scripts for analyzing a time-series small RNA (sRNA) transcriptomic data to identify and cluster drought-responsive sRNAs.
+This directory includes key scripts for analyzing a time-series small RNA (sRNA) transcriptomic data to identify and cluster drought-responsive sRNAs.
 
 1. DESeq2 analysis to identify drought-responsive sRNAs  
 Rscript sRNA.DESeq2.interaction.R  
