@@ -1,4 +1,4 @@
-## sRNAs_drought
+## sRNAsDrought_PlantGenome2018
 keys scripts used in the manuscript of maize small RNA transcriptomic profiles under drought. The manuscript was published in the Plant Genome (doi: 10.3835/plantgenome2018.08.0058).
 
 This directory includes key scripts for analyzing a time-series small RNA (sRNA) transcriptomic data to identify and cluster drought-responsive sRNAs.
