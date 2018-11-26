@@ -18,15 +18,14 @@ for (gene in genes) {
 	cat("\n")
 	if (sum(grepl(mut, cn)) == 2 & sum(grepl(wt, cn)) == 2) {
 		bsa <- dan.bsa(ac=snps, out.path=".", out.file=out.file,
-        	           total.genetic.length=2000, genetic.interval=20,
-            	       chr.colname="CHR", pos.colname="POS",
-     	       	       mut.ref.colname=paste0(mut,  "_REF"),
-				       mut.alt.colname=paste0(mut,  "_ALT"),
+			       total.genetic.length=2000, genetic.interval=20,
+			       chr.colname="CHR", pos.colname="POS",
+			       mut.ref.colname=paste0(mut,  "_REF"),
+			       mut.alt.colname=paste0(mut,  "_ALT"),
           	  	       wt.ref.colname=paste0(wt,  "_REF"),
-				       wt.alt.colname=paste0(wt,  "_ALT"),
-				       wt.ref.min=3, wt.alt.min=3,
-				       mut.total.min=5, mut.ind.num=30)
-	   
+			       wt.alt.colname=paste0(wt,  "_ALT"),
+			       wt.ref.min=3, wt.alt.min=3,
+			       mut.total.min=5, mut.ind.num=30)
 	}
   }
 }
