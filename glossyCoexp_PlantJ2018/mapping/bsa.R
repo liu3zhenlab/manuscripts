@@ -12,13 +12,13 @@ dan.bsa <- function (ac, out.path=".", out.file,
                      mut.ref.colname="mutREF", mut.alt.colname="mutALT",
                      wt.ref.colname="wtREF", wt.alt.colname="wtALT",
                      wt.ref.min=3, wt.alt.min=3, mut.total.min=5,
-					 mut.ind.num, total.genetic.length=2338,
+		     mut.ind.num, total.genetic.length=2338,
                      genetic.interval=20) {
 ## filter SNPs:
   ac <- ac[!is.na(ac[, wt.ref.colname]) &
            !is.na(ac[, wt.alt.colname]) &
-		   !is.na(ac[, mut.ref.colname]) &
-		   !is.na(ac[, mut.alt.colname]), ]
+	   !is.na(ac[, mut.ref.colname]) &
+	   !is.na(ac[, mut.alt.colname]), ]
   ac <- ac[ac[, wt.ref.colname] >= wt.ref.min
           & ac[, wt.alt.colname] >= wt.alt.min
           & (ac[, mut.ref.colname] + ac[, mut.alt.colname]) >= mut.total.min, ]
