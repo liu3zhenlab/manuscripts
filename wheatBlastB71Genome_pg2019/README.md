@@ -4,12 +4,15 @@ In-house scripts used in the analyses are posted here.
 #### dotplot R script to compare two sets of sequences
 first, nucmer was used to generate alignments
 ```
+#!/bin/bash
+
 query=B71Ref1.fas
 mg8=Magnaporthe_oryzae.MG8.dna.toplevel.fa
 nucmer --maxmatch --nosimplify $mg8 $query -l 1000 -p 3o-B71Ref1toMG8
 ```
 second, the function dotplot.two.sets.seqs.R is loaded and run
 ```
+# R scripts
 source("dotplot.two.sets.seqs.R")
 deltafile <- "3o-B71Ref1toMG8.delta"
 nucmer.twosets.plot(datapath=".", datafile=deltafile, lend.turnoff=F,
