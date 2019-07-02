@@ -1,7 +1,7 @@
 ### Effector Gene Reshuffling Involves Dispensable Mini-chromosomes in the Wheat Blast Fungus
 In-house scripts used in the analyses are posted here.
 
-#### dotplot R script to compare two sets of sequences
+1. dotplot R script to compare two sets of sequences
 first, nucmer was used to generate alignments
 ```
 #!/bin/bash
