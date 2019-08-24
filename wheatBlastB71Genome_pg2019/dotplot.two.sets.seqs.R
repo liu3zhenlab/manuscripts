@@ -3,7 +3,7 @@ nucmer.twosets.plot <- function(datapath=".", datafile, lend.turnoff=F,
                         xlabel.rm = "chr", ylabel.rm = "chr",
                         tableout=F, pdfout=F, outpath=".", line.width.factor=5,
                         xrange=NULL, yrange=NULL,
-						pdf.width = 10, pdf.height = 10,
+			pdf.width = 10, pdf.height = 10,
                         tableoutfile="seq.nucmer.txt", imageoutfile="seq.nucmer.pdf", ...) {
   ### datafile is the nucmer output .delta
   tmp.out.file <- paste(".nucmer.aln.", gsub(" ", "", date()), ".table.txt", sep="")
