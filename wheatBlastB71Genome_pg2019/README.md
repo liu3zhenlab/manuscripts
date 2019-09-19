@@ -26,3 +26,4 @@ nucmer.twosets.plot(datapath=".", datafile=deltafile, lend.turnoff=F,
   imageoutfile="FigDotPlot.B71Ref1toMG8.nucmer.pdf")
 ```
  
+2. Script is to used to detect differential expression between two groups.
