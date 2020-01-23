@@ -1,0 +1,31 @@
+x <- read.table("Hormone_transcript_FC_5b_for_mapman.txt",sep="\t",header=TRUE)
+head(x)
+z <- read.table("Hormone_gene_list.txt",sep="\t",header=TRUE)
+f <- which(z$interaction.padj < 0.05)
+x <- x[f,]
+z <- z[f,]
+aba <- which(z$Class=="ABA")
+aux <- which(z$Class=="AUX")
+br <- which(z$Class=="BR")
+ctk <- which(z$Class=="CTK")
+eth <- which(z$Class=="ETH")
+ga <- which(z$Class=="GA")
+ja <- which(z$Class=="JA")
+sa <- which(z$Class=="SA")
+y <- as.matrix(x[,-1])
+min <- which(y < quantile(y,probs=seq(0,1,0.1))[2])
+max <- which(y > quantile(y,probs=seq(0,1,0.1))[10])
+y[min] <- quantile(y,probs=seq(0,1,0.1))[2]
+y[max] <- quantile(y,probs=seq(0,1,0.1))[10]
+caba <- pheatmap(y[aba,],cluster_cols = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100))
+caux <- pheatmap(y[aux,],cluster_cols = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100))
+cbr <- pheatmap(y[br,],cluster_cols = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100))
+cctk <- pheatmap(y[ctk,],cluster_cols = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100))
+ceth <- pheatmap(y[eth,],cluster_cols = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100))
+cga <- pheatmap(y[ga,],cluster_cols = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100))
+cja <- pheatmap(y[ja,],cluster_cols = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100))
+csa <- pheatmap(y[sa,],cluster_cols = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100))
+reorder <- c(aba[caba$tree_row[["order"]]],aux[caux$tree_row[["order"]]],br[cbr$tree_row[["order"]]],ctk[cctk$tree_row[["order"]]],eth[ceth$tree_row[["order"]]],ga[cga$tree_row[["order"]]],ja[cja$tree_row[["order"]]],sa[csa$tree_row[["order"]]])
+out <- as.matrix(y[reorder,])
+row.names(out) <- z$Class[reorder]
+a <- pheatmap(out,cluster_cols = FALSE,cluster_rows = FALSE,treeheight_row = 0, colorRampPalette(c("green", "black", "red"))(n = 100),show_rownames=TRUE,fontsize_row=4)
