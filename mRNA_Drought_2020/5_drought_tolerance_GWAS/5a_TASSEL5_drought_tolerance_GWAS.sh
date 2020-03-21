@@ -1,1 +1,0 @@
-~/tassel5/run_pipeline.pl -Xmx18g -fork1 -h <genotype> -fork2 -r <trait> -fork3 -q <population structure> -fork4 -k <kinship> -combine5 -input1 -input2 -input3 -intersect -combine6 -input5 -input4 -mlm -mlmVarCompEst P3D -mlmCompressionLevel None -mlmOutputFile <output prefix> -runfork1 -runfork2 -runfork3 -runfork4
