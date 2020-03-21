@@ -1,0 +1,146 @@
+#### psRNATarget sRNA-mRNA interaction analysis ####
+
+## 6a psRNATarget prediction ##
+
+#Tools
+
+http://plantgrn.noble.org/psRNATarget/
+
+#Running Parameters:
+Default
+
+#Input data (PC):
+668,119 sRNA sequences: ~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6a_psRNATarget_predict/input/all.gt72.sRNA.sub.mt3.fasta
+
+#Outputs: 
+Raw prediction results: ~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6a_psRNATarget_predict/results/psRNATargetJob_default_top200.txt.zip
+Prediction summary: ~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6a_psRNATarget_predict/results/Summary of psRNA_Target resluts.xlsx
+
+
+
+
+## 6b psRNATarge result filtration and modified into pair file ##
+
+#Running folder:
+~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6b_filter_and_modify_predict_results/
+
+#Filtration:
+According to prediction summary:
+Known miRNA target mRNA cutoff: Expectation <= 1.5 (The ratio of known miRNA start to increase in readiness)
+sRNA target mRNA cutoff: Expectation <= 1 (The ratio of known miRNA is high and stable)
+
+#Filtration results (inputs for modify)
+know miRNA filtration result: ~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6b_filter_and_modify_predict_results/filter_results/cutoff_2_top200.txt
+sRNA filtration result: ~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6b_filter_and_modify_predict_results/filter_results/cutoff_1_top200.txt.gz
+
+#Modify Codes (PC): 
+Modify filtration results to pair files: ~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6b_filter_and_modify_predict_results/bin/6ba_modify_to_pair_format_cheng.R
+Merge two modify results:
+~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6b_filter_and_modify_predict_results/bin/6bb_merge_sRNA_miRNA_pair_results.R
+
+#Usage:
+Put running code, input data and resource codes in the same folder and run the running code in R Studio, results & figures will be produced in the same folder as well, copy them into ./results & ./figure folder
+
+#Modified pair files (PC):
+sRNA & miRNA merge file: ~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6b_filter_and_modify_predict_results/modify_pair_results/psRNATarge_sRNA_merge_miRNA_pairs.txt
+
+
+
+## 6c psRNATarget sRNA characterization (GO enrichment analysis) ##
+
+#Running folder:
+~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6c_psRNATarget_sRNA_characterization
+
+#Input data (PC, have been copied to running folder):
+sRNA master table new: ./inputs/all.gt72.sRNA.sub.spRNATarget_cheng.txt
+sRNA target mRNA pairs file: ./inputs/psRNATarge_sRNA_merge_miRNA_pairs.txt
+GO annotation file: ./inputs/ZmB73_v3.gene2go.txt
+
+#Running Code (PC): 
+~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6c_psRNATarget_sRNA_characterization/bin/6c_psRNATarget_sRNA_characterization_cheng.R
+
+#Usage:
+Put running code, input data and resource codes in the same folder and run the running code in R Studio, results & figures will be produced in the same folder as well, copy them into ./results & ./figure folder
+
+#Outputs (PC):
+GO enrichment of different sRNA target mRNA:
+~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6c_psRNATarget_sRNA_characterization/results/<up/down/shock.sRNA.targeted.genes.enriched.GO.genes_cheng.txt
+
+Figure of GO enrichment of different sRNA target mRNA:
+~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6c_psRNATarget_sRNA_characterization/figures/<up/down/shock.sRNA.targeted.genes.enriched.GO.genes_cheng.pdf
+
+
+
+## 6d psRNATarget predict sRNA target mRNA interaction ##
+
+#Running folder:
+~/Documents/Cheng_project/121917_B73_drought/Analysis/6_new_sRNA_target_mRNA_predict/6d_psRNATarget_sRNA_mRNA_interaction
+
+# 6da Build new sRNA master table for psRNATarget result #
+
+#Input data
+sRNA master table: ./input/all.gt72.sRNA.sub.mt3_cheng.txt
+psRNATarget pair file: ./input/psRNATarge_sRNA_merge_miRNA_pairs.txt
+
+#Running codes
+Build new sRNA master table: ./bin/6da_new_sRNA_master_table.R
+
+#Outputs
+New sRNA master table for psRNATarget: ./input/all.gt72.sRNA.sub.spRNATarget_cheng.txt
+
+
+# 6db Correlation of sRNA and target mRNA predicted bu psRNATarget #
+
+#Input data (PC, have been copied to running folder):
+sRNA master table: ./input/all.gt72.sRNA.sub.spRNATarget_cheng.txt
+known miRNA table: ./input/miRNA_predicted_target.txt
+sRNA target mRNA pairs file: ./input/psRNATarge_sRNA_merge_miRNA_pairs.txt
+conserved sRNA target mRNA pairs file: ./input/conserved.sRNA_mRNA_minus_match.pairs.txt
+mRNA master table: ./input/mRNA_drought_timeseries_output1_cheng.txt
+mRNA expression: ./input/mRNA.normalized.counts_cheng.txt
+sRNA expression: ./input/sRNA.sub.normalized.counts.txt
+TF gene family table: ./input/maize.TF.family.txt
+gene annotation: ./input/gene_v3_annotation_pang_nodup_brief.txt
+Go pathway information: ./input/ZmB73_v3.gene2go.txt
+
+#Resoure codes (PC, have been copied to running folder):
+GO enrichment analysis: ./input/enrich.test.R
+num fuzzy group: ./input/num.fuzzy.group.R
+
+#Running Code (PC): 
+Code for all pairs correlation: ./bin/6db_sRNA_mRNA_correlation_cheng
+
+#Usage:
+Put running code, input data and resource codes in the same folder and run the running code in R Studio, results & figures will be produced in the same folder as well, copy them into ./results
+
+#Outputs (PC):
+Number and chi-square test of enrichment of miRNA and snoRNA with negative correlation
+./results/enrichment_of_mirna_and_snorna.png
+./results/chi_test_of_enrichment.png
+
+all pairs neg.cor result:
+./results/sl.all.gene_sRNA.sig.negative.cor_cheng.psRNATarget.txt
+
+sRNA and sig.DS mRNA pairs neg.cor result:
+./results/drought.all.gene_sRNA.sig.negative.cor_cheng.psRNATarget.txt
+
+GO enrichment analysis of neg.cor pairs:
+./results/all.sigGO.sRNA.negative.correlation.genes_psRNATarget.txt
+
+
+# 6dd Build a new mRNA master table with sRNA information #
+
+#Input data (PC, have been copied to running folder):
+Old sRNA target mRNA pairs: ./input/sRNA_mRNA_minus_match.pairs.txt
+psRNATarget pairs: ./input/psRNATarge_sRNA_merge_miRNA_pairs.txt
+know_miRNA information: ./input/miRNA_predicted_target.txt
+mRNA master table cheng: ./input/mRNA_drought_timeseries_output1_cheng.txt
+
+#Running Code (PC): 
+Building new mRNA master tab with sRNA: ./bin/6dc_new_gene_master_tab_with_srna.R
+
+#Usage:
+Put running code, input data and resource codes in the same folder and run the running code in R Studio, results & figures will be produced in the same folder as well, copy them into ./results
+
+#Outputs (PC):
+new mRNA master tab with sRNA: ./results/new_gene_master_tab_with_sRNA.txt
